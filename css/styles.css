@@ -10,6 +10,8 @@
   --links-color: rgba(255, 255, 255, 0.6);
   --border-color: #ececec;
   --fill-color: #afb1b8;
+  --background-elements: rgba(47, 48, 58, 0.8);
+  --modal-backdrop-color:rgba(0, 0, 0, 0.2);
 }
 /*   основний колір тексту  #757575 */
 /* вторинний колір тексту #212121 */
@@ -20,6 +22,9 @@
 /* основний колір фону #F5F5F5 */
 /* колір фона 1 #F5F4FA */
 /* колір фона 2 #2F303A */
+a {
+  transition: color 250ms;
+}
 h1,
 h2,
 h3,
@@ -67,6 +72,21 @@ li {
   list-style-type: none;
 }
 /* header styles */
+.site-nav a {
+  position: relative;
+}
+.current::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  left: 0;
+  bottom: -1px;
+
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
 .site-nav,
 .site-nav-list,
 .auth-nav {
@@ -82,8 +102,8 @@ li {
   width: 10px;
   height: 16px;
 }
-.link :hover .env{
-  color:var(--accent-color);
+.link :hover .env {
+  color: var(--accent-color);
 }
 .page-container {
   display: flex;
@@ -138,18 +158,19 @@ li {
   display: flex;
   align-items: center;
   color: var(--primary-text-color);
-  fill:var(--fill-color)
+  fill: var(--fill-color);
 }
 .link.current {
   color: var(--accent-color);
 }
-.link:hover ,
-.link:focus  {
+.link:hover,
+.link:focus {
   cursor: pointer;
   color: var(--accent-color);
-  fill:var(--accent-color)
+  fill: var(--accent-color);
 }
 /* hero styles */
+
 
 .hero {
   max-width: 1600px;
@@ -188,7 +209,33 @@ li {
   font-family: inherit;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+/* modal window */
+.backdrop {
+  position: absolute;
+width: 1600px;
+height: 1024px;
+left: 0px;
+top: 0px;
+
+opacity: 1;
+
+background-color:var(--modal-backdrop-color)
+}
+.backdrop.is-hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.modal {
+  position: absolute;
+width: 528px;
+height: 581px;
+left: 536px;
+top: 221px;
+}
 /* main styles */
+
 .main-list {
   gap: 30px;
   display: flex;
@@ -240,6 +287,27 @@ main .main {
 .section-whatwedo {
   padding-top: 0;
 }
+.card-title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.07px;
+  text-transform: uppercase;
+
+  color: var(--background-color-header);
+}
+.card-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  width: 370px;
+  height: 70px;
+  bottom: 0px;
+  left: 0px;
+
+  background-color: var(--background-elements);
+}
 .title {
   margin-bottom: 50px;
   color: var(--secondary-text-color);
@@ -247,13 +315,13 @@ main .main {
   font-size: 36px;
   line-height: 1.16;
   text-align: center;
-  letter-spacing: 0.03em;
 }
 .items {
   display: flex;
   gap: 30px;
 }
 .item-photo {
+  position: relative;
   width: 370px;
 }
 .portfolio .list-title {
@@ -396,7 +464,8 @@ main .main {
   cursor: pointer;
   background-color: var(--accent-color);
   color: var(--background-color-header);
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 .buttons-list {
   display: flex;
@@ -414,9 +483,9 @@ main .main {
   background-color: var(--background-color-header);
 }
 .port-link:hover,
-.port-link:focus{
-display: block;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.port-link:focus {
+  display: block;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .port-box {
   padding: 20px 24px;
@@ -457,7 +526,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: block;
   width: 44px;
   height: 44px;
-  border-radius:  50%;
+  border-radius: 50%;
 }
 .our-socials a:hover,
 .our-socials a:focus {
