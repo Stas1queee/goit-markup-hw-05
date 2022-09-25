@@ -221,6 +221,7 @@ li {
   opacity: 1;
 
   background-color: var(--modal-backdrop-color);
+  z-index: 999;
   
 }
 
