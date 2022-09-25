@@ -11,7 +11,8 @@
   --border-color: #ececec;
   --fill-color: #afb1b8;
   --background-elements: rgba(47, 48, 58, 0.8);
-  --modal-backdrop-color:rgba(0, 0, 0, 0.2);
+  --modal-backdrop-color: rgba(0, 0, 0, 0.2);
+  --background-cards: rgba(33, 150, 243, 0.9);
 }
 /*   основний колір тексту  #757575 */
 /* вторинний колір тексту #212121 */
@@ -171,7 +172,6 @@ li {
 }
 /* hero styles */
 
-
 .hero {
   max-width: 1600px;
   margin-left: auto;
@@ -212,28 +212,50 @@ li {
 
 /* modal window */
 .backdrop {
-  position: absolute;
-width: 1600px;
-height: 1024px;
-left: 0px;
-top: 0px;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
 
-opacity: 1;
+  opacity: 1;
 
-background-color:var(--modal-backdrop-color)
+  background-color: var(--modal-backdrop-color);
+  
 }
+
 .backdrop.is-hidden {
+  visibility: hidden;
   pointer-events: none;
   opacity: 0;
 }
 
 .modal {
   position: absolute;
-width: 528px;
-height: 581px;
-left: 536px;
-top: 221px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 528px;
+  height: 581px;
+
+  background-color: var(--background-color-header);
 }
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--background-color-header);
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
 /* main styles */
 
 .main-list {
@@ -458,6 +480,10 @@ main .main {
   font-size: 16px;
   line-height: 1.62;
   font-family: inherit;
+
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-page:hover,
 .btn-page:focus {
@@ -491,6 +517,36 @@ main .main {
   padding: 20px 24px;
   border: 1px solid var(--addinational-background-color);
   border-top: none;
+}
+
+.port-card {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.port-card-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 63px 24px;
+
+  background-color: var(--background-cards);
+  color: var(--background-color-header);
+  font-size: 18px;
+  line-height: 1.5;
+
+  transform: translateY(100%);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.port-link:hover .port-card-text,
+.port-link:focus .port-card-text {
+  transform: translateY(0);
 }
 /* footer styles */
 .footer {
