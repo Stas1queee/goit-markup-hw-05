@@ -539,7 +539,7 @@ main .main {
   font-size: 18px;
   line-height: 1.5;
 
-  transform: translateY(100%);
+  transform: translateY(101%);
   transition-property: transform;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
